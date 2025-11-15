@@ -1,0 +1,86 @@
+riderModule.iml
+/_ReSharper.Caches/
+
+############################
+# Build artifacts
+############################
+bin/
+obj/
+out/
+
+############################
+# Rider / ReSharper
+############################
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+############################
+# Visual Studio
+############################
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+############################
+# Logs & coverage
+############################
+*.log
+coverage/
+*.coverage
+*.coveragexml
+TestResult*/
+TestResults/
+
+############################
+# Environment & configs
+############################
+# оставляем appsettings.json (общие настройки),
+# но исключаем локальные / дев конфиги
+.env
+.env.*
+
+############################
+# NuGet
+############################
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+############################
+# Docker
+############################
+.docker/
+docker-compose.override.yml
+
+############################
+# OS-specific
+############################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+############################
+# JetBrains Rider caches
+############################
+*.ipr
+*.iws
+
+############################
+# Others (optional)
+############################
+# пользовательские секреты / сертификаты
+*.pfx
+*.p12
+*.key
+*.crt
+
+# Resharper settings (если не нужны в репе)
+_ReSharper*/
+
+# локальные тулзы
+tools/

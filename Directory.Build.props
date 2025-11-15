@@ -1,0 +1,69 @@
+<Project>
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <LangVersion>latest</LangVersion>
+        <Features>strict</Features>
+        <ContainerFamily>alpine</ContainerFamily>
+    </PropertyGroup>
+
+    <!-- Переменные -->
+    <PropertyGroup>
+        <DefaultTargetFramework>net9.0</DefaultTargetFramework>
+    </PropertyGroup>
+
+    <!-- Требуем аккуратного кода -->
+    <PropertyGroup>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <NoWarn>$(NoWarn);CA1014;CA1040;CA1062;CA1716;CA1008;CA1031;CA1034;CA1024;CA1711;CA1720;CA1002;CA1819;CA2227;CA2007;CA1515;RCS1037</NoWarn>
+        <!-- CA1014: Mark assemblies with CLSCompliant, не нужно -->
+        <!-- CA1040: Не используйте пустые интерфейсы -->
+        <!-- CA1062: Проверять аргументы на null в публичных методах, потому что используем Fody.NullGuard -->
+        <!-- CA1716: Identifiers should not match keywords -->
+        <!-- CA2007: Do not directly await a Task -->
+        <!-- CA1008: Enums should have zero value -->
+        <!-- CA1031: Измените "ToObject", чтобы перехватывать исключение более конкретного типа или выдать исключение повторно -->
+        <!-- CA1034: Nested types should not be visible -->
+        <!-- CA1024: Use properties where appropriate -->
+        <!-- CA1711: Identifiers should not have incorrect suffix -->
+        <!-- CA1720: Identifiers should not contain type names -->
+        <!-- CA1002: Do not expose generic lists -->
+        <!-- CA1819: Свойства не должны возвращать массивы -->
+        <!-- CA2227: Удалите метод задания свойств для поля, чтобы сделать его доступным только для чтения -->
+        <!-- CA2007: Попробуйте вызвать ConfigureAwait для ожидаемой задачи -->
+        <!-- CA1515: Так как для API приложения обычно не используется ссылка из-за пределов сборки, типы можно сделать внутренними -->
+        <!-- RCS1037: Remove trailing white-space -->
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AsyncFixer" Version="1.6.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="IDisposableAnalyzers" Version="4.0.8">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.CST.DevSkim" Version="1.0.59"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" PrivateAssets="all" />
+        <PackageReference Include="ReflectionAnalyzers" Version="0.3.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Roslynator.Analyzers" Version="4.13.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <!-- Превращаем предупреждения в ошибки (опционально) -->
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <!-- Позволяет расширить поведение анализаторов -->
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    </PropertyGroup>
+</Project>
